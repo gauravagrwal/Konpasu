@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Essentials;
+﻿using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Konpasu
 {
-    internal class CompassViewModel:MvvmHelpers.BaseViewModel
+    internal class CompassViewModel : MvvmHelpers.BaseViewModel
     {
         #region Properties
-        double heading = 0;
+        private double heading = 0;
         public double Heading
         {
             get => heading;
             set => SetProperty(ref heading, value);
         }
 
-        string headingDisplay;
+        private string headingDisplay;
         public string HeadingDisplay
         {
             get => headingDisplay;
@@ -35,25 +32,29 @@ namespace Konpasu
         }
 
         #region Methods
-        void StartCompass()
+        private void StartCompass()
         {
             if (Compass.IsMonitoring)
+            {
                 return;
+            }
 
             Compass.ReadingChanged += CompassReading;
             Compass.Start(SensorSpeed.UI, true);
         }
 
-        void StopCompass()
+        private void StopCompass()
         {
             if (!Compass.IsMonitoring)
+            {
                 return;
+            }
 
             Compass.ReadingChanged -= CompassReading;
             Compass.Stop();
         }
 
-        void CompassReading(object sender, CompassChangedEventArgs e)
+        private void CompassReading(object sender, CompassChangedEventArgs e)
         {
             Heading = e.Reading.HeadingMagneticNorth;
             HeadingDisplay = $"Heading: {Heading}";
