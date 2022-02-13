@@ -8,7 +8,7 @@
         <local:CompassViewModel/>
     </ContentPage.BindingContext>
 
-    <StackLayout BackgroundColor="White">
+    <StackLayout>
         <StackLayout VerticalOptions="Start">
             <!-- top controls -->
             <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
@@ -40,7 +40,6 @@
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
                    Text="{Binding HeadingDisplay}"
-                   TextColor="Black"
                    FontSize="Large"
                    FontAttributes="Bold"/>
         </StackLayout>

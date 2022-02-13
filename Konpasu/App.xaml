@@ -4,5 +4,17 @@
              x:Class="Konpasu.App">
     <Application.Resources>
 
+        <!--  Colors  -->
+        <Color x:Key="DarkGray">#121212</Color>
+        <Color x:Key="LightWhite">#EFEFEF</Color>
+        
+        <!--  Styles  -->
+        <Style TargetType="StackLayout">
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={StaticResource DarkGray}, Light={StaticResource LightWhite}}" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource LightWhite}, Light={StaticResource DarkGray}}" />
+        </Style>
+        
     </Application.Resources>
 </Application>
