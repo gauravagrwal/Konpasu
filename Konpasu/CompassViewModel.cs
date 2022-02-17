@@ -1,27 +1,36 @@
-﻿using Xamarin.Essentials;
+﻿using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Konpasu
 {
-    internal class CompassViewModel : MvvmHelpers.BaseViewModel
+    internal class CompassViewModel : BaseViewModel
     {
         #region Properties
-        private double heading = 0;
-        public double Heading
+        private int heading = 0;
+        public int Heading
         {
             get => heading;
-            set => SetProperty(ref heading, value);
+            set
+            {
+                heading = value;
+                OnPropertyChanged();
+            }
         }
 
         private string headingDisplay;
         public string HeadingDisplay
         {
             get => headingDisplay;
-            set => SetProperty(ref headingDisplay, value);
+            set
+            {
+                headingDisplay = value;
+                OnPropertyChanged();
+            }
         }
 
-        public Command StartCompassCommand { get; }
-        public Command StopCompassCommand { get; }
+        public ICommand StartCompassCommand { get; }
+        public ICommand StopCompassCommand { get; }
         #endregion
 
         /* Constructor */
@@ -56,8 +65,8 @@ namespace Konpasu
 
         private void CompassReading(object sender, CompassChangedEventArgs e)
         {
-            Heading = e.Reading.HeadingMagneticNorth;
-            HeadingDisplay = $"Heading: {Heading}";
+            Heading = (int)(e.Reading.HeadingMagneticNorth);
+            HeadingDisplay = $"Heading: {Heading}°";
         }
         #endregion
     }
