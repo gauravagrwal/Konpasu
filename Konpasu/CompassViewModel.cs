@@ -7,26 +7,18 @@ namespace Konpasu
     internal class CompassViewModel : BaseViewModel
     {
         #region Properties
-        private int heading = 0;
+        private int _heading = 0;
         public int Heading
         {
-            get => heading;
-            set
-            {
-                heading = value;
-                OnPropertyChanged();
-            }
+            get => _heading;
+            set => SetProperty(ref _heading, value);
         }
 
-        private string headingDisplay;
+        private string _headingDisplay;
         public string HeadingDisplay
         {
-            get => headingDisplay;
-            set
-            {
-                headingDisplay = value;
-                OnPropertyChanged();
-            }
+            get => _headingDisplay;
+            set => SetProperty(ref _headingDisplay, value);
         }
 
         public ICommand StartCompassCommand { get; }
